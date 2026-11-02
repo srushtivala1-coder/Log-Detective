@@ -1,0 +1,127 @@
+#!/bin/bash
+# lib/functions.sh – all functions for Log Detective
+DATA="data/access.log"
+
+LOG="logs/activity.log"
+
+# write one line to the activity log
+log() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') | $*" >> "$LOG"
+}
+
+# check the data file / folder exists before using it
+check_data() {
+    if [ ! -e "$DATA" ]; then
+        echo "Data not found: $DATA"
+        return 1
+    fi
+}
+
+show_help() {
+    echo "Usage: ./main.sh            -> open the menu"
+    echo "       ./main.sh --help     -> show this help"
+    echo "       ./main.sh --backup   -> backup data/ now"
+    echo "       ./main.sh --cron     -> run the scheduled (crontab) task"
+}
+
+view_data() {
+    check_data || return
+    if [ -d "$DATA" ]; then ls -l "$DATA"; else cat -n "$DATA" | more; fi
+}
+
+do_backup() {
+    f="backups/data_$(date +%Y%m%d_%H%M%S).tar.gz"
+    tar -czf "$f" data/
+    echo "Backup saved: $f ($(du -h "$f" | cut -f1))"
+    log "backup created $f"
+}
+
+view_log() {
+    if [ -f "$LOG" ]; then tail -n 15 "$LOG"; else echo "No activity yet."; fi
+}
+
+# ------------------------------------------------------------
+# FEATURE 1: Top 10 IP addresses
+# Commands you can use: awk, cut, sort, uniq -c, grep
+# ------------------------------------------------------------
+feature_1() {
+    echo "== Top 10 IP addresses =="
+    echo "TODO: write the code for this feature (see your project guide, Step 3)."
+    # ---- example to start from (remove the # and change it) ----
+    # read -p "Enter IP - - [date] "METHOD /page HTTP/1.1" status bytes: " v1
+    # read -p "Enter field2: " v2
+    # # ...ask for every column: IP - - [date] "METHOD /page HTTP/1.1" status bytes
+    # if [ -z "$v1" ]; then echo "Value cannot be empty"; return; fi
+    # echo "$v1,$v2" >> "$DATA"        # add all 1 values in the same order as the header
+    # echo "Saved!"
+    log "feature_1 used"
+}
+
+# ------------------------------------------------------------
+# FEATURE 2: Count of each HTTP status code
+# Commands you can use: awk, cut, sort, uniq -c, grep
+# ------------------------------------------------------------
+feature_2() {
+    echo "== Count of each HTTP status code =="
+    echo "TODO: write the code for this feature (see your project guide, Step 4)."
+    # ---- example to start from (remove the # and change it) ----
+    # # example: count rows per value of column 2
+    # tail -n +2 "$DATA" | cut -d',' -f2 | sort | uniq -c | sort -nr | head -5
+    # # example: top 5 rows by column 1 (IP - - [date] "METHOD /page HTTP/1.1" status bytes)
+    # tail -n +2 "$DATA" | sort -t',' -k1 -nr | head -5
+    log "feature_2 used"
+}
+
+# ------------------------------------------------------------
+# FEATURE 3: Most requested pages
+# Commands you can use: awk, cut, sort, uniq -c, grep
+# ------------------------------------------------------------
+feature_3() {
+    echo "== Most requested pages =="
+    echo "TODO: write the code for this feature (see your project guide, Step 5)."
+    # ---- example to start from (remove the # and change it) ----
+    # # example: count rows per value of column 2
+    # tail -n +2 "$DATA" | cut -d',' -f2 | sort | uniq -c | sort -nr | head -5
+    # # example: top 5 rows by column 1 (IP - - [date] "METHOD /page HTTP/1.1" status bytes)
+    # tail -n +2 "$DATA" | sort -t',' -k1 -nr | head -5
+    log "feature_3 used"
+}
+
+# ------------------------------------------------------------
+# FEATURE 4: 404 pages list
+# Commands you can use: awk, cut, sort, uniq -c, grep
+# ------------------------------------------------------------
+feature_4() {
+    echo "== 404 pages list =="
+    echo "TODO: write the code for this feature (see your project guide, Step 6)."
+    # ---- example to start from (remove the # and change it) ----
+    # read -p "Search for: " word
+    # grep -i "$word" "$DATA" || echo "Nothing found"
+    # # or show selected columns: awk -F',' '{ print $1, $2 }' "$DATA"
+    log "feature_4 used"
+}
+
+# ------------------------------------------------------------
+# FEATURE 5: Requests per hour report
+# Commands you can use: awk, cut, sort, uniq -c, grep
+# ------------------------------------------------------------
+feature_5() {
+    echo "== Requests per hour report =="
+    echo "TODO: write the code for this feature (see your project guide, Step 7)."
+    # ---- example to start from (remove the # and change it) ----
+    # # example: count rows per value of column 2
+    # tail -n +2 "$DATA" | cut -d',' -f2 | sort | uniq -c | sort -nr | head -5
+    # # example: top 5 rows by column 1 (IP - - [date] "METHOD /page HTTP/1.1" status bytes)
+    # tail -n +2 "$DATA" | sort -t',' -k1 -nr | head -5
+    log "feature_5 used"
+}
+
+# ------------------------------------------------------------
+# CRON TASK: Every hour, append the top 3 IPs of the last hour to traffic.log
+# Runs when crontab calls:  ./main.sh --cron
+# ------------------------------------------------------------
+cron_task() {
+    # TODO: write the code for the scheduled task here (Step 10 of your guide)
+    echo "$(date '+%Y-%m-%d %H:%M') cron task ran" >> reports/cron_output.txt
+    log "cron task ran"
+}
