@@ -1,4 +1,4 @@
-Project GuideProject Guide
+Project Guide
 
 1. Introduction
 
