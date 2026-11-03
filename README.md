@@ -1,55 +1,197 @@
-# L38 - Log Detective
+Project GuideProject Guide
 
-## Project Description
-Log Detective is a Linux shell scripting mini-project that analyzes web server access logs and generates useful reports.
+1. Introduction
 
-## Technologies Used
-- Ubuntu Linux
-- Bash Shell Scripting
-- AWK
-- grep, sort, uniq, head
-- tar
-- Cron
+Log Detective is a Linux Shell Scripting project designed to analyse web server access logs and generate useful reports.
 
-## Features
-1. Display the top 10 IP addresses.
-2. Count each HTTP status code.
-3. Display the most requested pages.
-4. List pages returning HTTP 404 errors.
-5. Generate a requests-per-hour report.
-6. View access log data.
-7. Create a compressed backup using tar.gz.
-8. View the activity log.
-9. Generate a report of the top 3 IP addresses for the current hour.
+2. Requirements
 
-## Project Structure
-- main.sh: Main menu and command handling
-- lib/functions.sh: Project functions
-- data/access.log: Sample web server access logs
-- logs/activity.log: Activity history
-- reports/traffic.log: Cron traffic report
-- backups/: Compressed backups
+Ubuntu Linux
 
-## How to Run
-Open the terminal and navigate to the project folder:
+Bash Shell
 
-    cd ~/linux_project/logdetective
+AWK
 
-Run the interactive menu:
+Basic Linux commands
 
-    ./main.sh
+Cron (for scheduled report generation)
 
-Show help:
+3. How to Run the Project
 
-    ./main.sh --help
+Open the Ubuntu terminal and navigate to the project directory:
+
+cd ~/linux_project/logdetective
+
+Run the project:
+
+./main.sh
+
+The main menu will appear on the terminal.
+
+If permission is denied, run:
+
+chmod +x main.sh
+
+Then execute the project again.
+
+4. Menu Options
+
+Top 10 IP Addresses – Displays the most frequent IP addresses.
+
+HTTP Status Codes – Counts different HTTP response codes.
+
+Most Requested Pages – Displays frequently requested web pages.
+
+404 Error Pages – Lists pages that returned HTTP 404 errors.
+
+Requests Per Hour – Displays the number of requests per hour.
+
+View Access Log – Displays the access log data.
+
+Create Backup – Creates a compressed tar.gz backup.
+
+View Activity Log – Displays recent project activities.
+
+Exit – Closes the application.
+
+5. Command-Line Options
+
+Display help:
+
+./main.sh --help
 
 Create a backup:
 
-    ./main.sh --backup
+./main.sh --backup
 
-Generate the traffic report:
+Generate a traffic report:
 
-    ./main.sh --cron
+./main.sh --cron
 
-## Conclusion
-Log Detective demonstrates Linux shell scripting, log analysis, file backup, activity logging, and scheduled task concepts.
+6. Project Files
+
+main.sh – Main menu and program execution.
+
+lib/functions.sh – Contains the project functions.
+
+data/access.log – Sample web server access log data.
+
+logs/activity.log – Stores activity records.
+
+reports/traffic.log – Stores traffic reports.
+
+backups/ – Stores compressed backup files.
+
+7. Technologies Used
+
+Linux
+
+Bash Shell Scripting
+
+AWK
+
+sort, uniq, head and other Linux commands
+
+tar and Cron
+
+8. Conclusion
+
+Log Detective demonstrates the practical use of Linux shell scripting for log analysis, reporting, activity tracking and data backup.
+
+1. Introduction
+
+Log Detective is a Linux Shell Scripting project designed to analyse web server access logs and generate useful reports.
+
+2. Requirements
+
+Ubuntu Linux
+
+Bash Shell
+
+AWK
+
+Basic Linux commands
+
+Cron (for scheduled report generation)
+
+3. How to Run the Project
+
+Open the Ubuntu terminal and navigate to the project directory:
+
+cd ~/linux_project/logdetective
+
+Run the project:
+
+./main.sh
+
+The main menu will appear on the terminal.
+
+If permission is denied, run:
+
+chmod +x main.sh
+
+Then execute the project again.
+
+4. Menu Options
+
+Top 10 IP Addresses – Displays the most frequent IP addresses.
+
+HTTP Status Codes – Counts different HTTP response codes.
+
+Most Requested Pages – Displays frequently requested web pages.
+
+404 Error Pages – Lists pages that returned HTTP 404 errors.
+
+Requests Per Hour – Displays the number of requests per hour.
+
+View Access Log – Displays the access log data.
+
+Create Backup – Creates a compressed tar.gz backup.
+
+View Activity Log – Displays recent project activities.
+
+Exit – Closes the application.
+
+5. Command-Line Options
+
+Display help:
+
+./main.sh --help
+
+Create a backup:
+
+./main.sh --backup
+
+Generate a traffic report:
+
+./main.sh --cron
+
+6. Project Files
+
+main.sh – Main menu and program execution.
+
+lib/functions.sh – Contains the project functions.
+
+data/access.log – Sample web server access log data.
+
+logs/activity.log – Stores activity records.
+
+reports/traffic.log – Stores traffic reports.
+
+backups/ – Stores compressed backup files.
+
+7. Technologies Used
+
+Linux
+
+Bash Shell Scripting
+
+AWK
+
+sort, uniq, head and other Linux commands
+
+tar and Cron
+
+8. Conclusion
+
+Log Detective demonstrates the practical use of Linux shell scripting for log analysis, reporting, activity tracking and data backup.
